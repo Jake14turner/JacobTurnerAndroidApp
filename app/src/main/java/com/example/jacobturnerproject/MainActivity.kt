@@ -34,25 +34,23 @@ class MainActivity : ComponentActivity() {
             JacobTurnerProjectTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = Color(0xADD8E6) // Set background color here
                 ) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color(0xADD8E6))  // Light blue background
+
                 ) {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(16.dp)
-                            .background(Color(0x2C2C2C)),  // Light gray background
-                        verticalArrangement = Arrangement.Center,
+                            .padding(16.dp),
+                        verticalArrangement = Arrangement.Center, //vertical arr. and horizontal arr. are here to help us get the buttons centered.
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        // State to manage the current image
+                        //create a varibale to hold the current image.
                         val currentImage = remember { mutableStateOf(R.drawable.giraffe) }
 
-                        // Crossfade for smooth image transition
+                        //this will handle the smooth transitions from picture to picture
                         Crossfade(targetState = currentImage.value) { imageResource ->
                             val image: Painter = painterResource(id = imageResource)
                             Image(
@@ -62,28 +60,28 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        Spacer(modifier = Modifier.height(20.dp)) // Space between image and buttons
+                        Spacer(modifier = Modifier.height(20.dp)) //space between image and buttons
 
-                        // Row to display the buttons side by side
+                        //estabolish a row so that everything inside of it will be in the same line.
                         Row(
                             horizontalArrangement = Arrangement.Center,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            // Button 1 - Giraffe
+                            //define button 1
                             Button(
                                 onClick = { currentImage.value = R.drawable.giraffe },
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color(
                                         0xFFADD8E6
                                     ), contentColor = Color.White
-                                ) // Light Blue button
+                                )
                             ) {
                                 Text(text = "Button 1")
                             }
 
                             Spacer(modifier = Modifier.width(16.dp)) // Space between buttons
 
-                            // Button 2 - Thing
+                            // define button 2
                             Button(
                                 onClick = { currentImage.value = R.drawable.thing },
                                 colors = ButtonDefaults.buttonColors(
@@ -97,7 +95,7 @@ class MainActivity : ComponentActivity() {
 
                             Spacer(modifier = Modifier.width(16.dp)) // Space between buttons
 
-                            // Button 3 - Sloth
+                            //define button 3
                             Button(
                                 onClick = { currentImage.value = R.drawable.sloth },
                                 colors = ButtonDefaults.buttonColors(
